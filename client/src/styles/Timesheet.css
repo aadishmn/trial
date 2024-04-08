@@ -1,0 +1,115 @@
+.input-field {
+  width: 100%; /* Adjust the width as needed */
+  height: 30px; /* Adjust the height as needed */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #007bff; /* Change the border color on focus */
+}
+
+.btn-purple {
+  background-color: purple;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-purple:hover {
+  background-color: #6a1b9a; /* Darker shade of purple on hover */
+}
+.main {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.total-time {
+  color: #6a0dad;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subHeading select {
+  background-color: #6a0dad;
+  color: white;
+}
+
+.subHeading2 {
+  color: #6a0dad;
+}
+
+.table th {
+  background-color: white;
+  color: #6a0dad; /* Purple color */
+}
+
+.table td {
+  background-color: #f0f0f0;
+}
+
+.submit-button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.submit-button button {
+  background-color: #6a0dad;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.submit-button button:hover {
+  background-color: #4a0780;
+}
+
+/* Timesheet.css */
+
+.container {
+  text-align: center;
+}
+
+.timesheet-title {
+  color: white;
+  margin-bottom: 30px;
+}
+
+.date-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.date-navigation-btn {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.date-range {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  white-space: nowrap; /* Ensures the date range stays on a single line */
+}
+
+.timesheet {
+  margin-top: 20px;
+}
