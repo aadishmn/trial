@@ -71,27 +71,26 @@ const allocate_project = async (req, res) => {
 
 const getUsersProjects = async (req, res) => {
   try {
-    // if (req.user && req.user.role === "admin") {
-    const Users = await User.find();
-    const Projects = await Project.find();
-    const formattedData = {
-      message: "data received!",
-      users: Users.map((user) => ({ email: user.email, name: user.firstName })),
-      projects: Projects.map((project) => ({
-        PID: project.PID,
-        name: project.name,
-        start: project.start,
-        end: project.end,
-      })),
-    };
-    res.json(formattedData);
+    const userEmail = req.data.email; // Assuming email is stored in req.data.email
 
-    // } else {
-    //     res.status(403).json({ message: "Only admins can perform this function" });
-    // }
+    // Find projects allocated to the user
+    const allocatedProjects = await ProjectAllocate.find({ email: userEmail });
+
+    // Extract the project IDs from the allocated projects
+    const projectIDs = allocatedProjects.map((project) => project.PID);
+    // Find the project names corresponding to the project IDs
+    const projects = await Project.find({ PID: { $in: projectIDs } });
+    // // Extract project names
+    // const projectNames = projects.map((project) => project.name);
+    // Send the project names in the response
+    console.log(projects);
+    res.json({
+      message: "User's project names received!",
+      projects: projects,
+    });
   } catch (err) {
-    console.error("Error creating project", err);
-    res.status(500).json({ message: "Error creating project" });
+    console.error("Error fetching user's projects", err);
+    res.status(500).json({ message: "Error fetching user's projects" });
   }
 };
 

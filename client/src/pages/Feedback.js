@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Questions from "../Data/feedbackQues.json";
+import ReactStars from "react-star-ratings";
 
 function Feedback() {
   const [accessToken, setToken] = useState(localStorage.getItem("token"));
@@ -36,6 +37,12 @@ function Feedback() {
     setFormData({
       ...formData,
       [name]: value,
+    });
+  };
+  const handleStarRatingChange = (newRating, name) => {
+    setFormData({
+      ...formData,
+      [name]: newRating,
     });
   };
 
@@ -103,80 +110,80 @@ function Feedback() {
               <label htmlFor="q1" className="form-label">
                 {Questions.common.q1}
               </label>
-              <input
-                type="number"
-                id="q1"
-                name="q1"
-                value={formData.q1}
-                onChange={handleInputChange}
-                min="1"
-                max="5"
-                className="form-input"
-                required
+              <ReactStars
+                count={5}
+                value={formData.q3}
+                onChange={(newRating) =>
+                  handleStarRatingChange(newRating, "q3")
+                }
+                size={24}
+                activeColor="#ffffff"
+                starHoverColor="#d3d3d3"
+                starEmptyColor="#d3d3d3"
               />
             </div>
             <div className="form-group">
               <label htmlFor="q2" className="form-label">
                 {Questions.common.q2}
               </label>
-              <input
-                type="number"
-                id="q2"
-                name="q2"
-                value={formData.q2}
-                onChange={handleInputChange}
-                min="1"
-                max="5"
-                className="form-input"
-                required
+              <ReactStars
+                count={5}
+                value={formData.q3}
+                onChange={(newRating) =>
+                  handleStarRatingChange(newRating, "q3")
+                }
+                size={24}
+                activeColor="#ffffff"
+                starHoverColor="#d3d3d3"
+                starEmptyColor="#d3d3d3"
               />
             </div>
             <div className="form-group">
               <label htmlFor="q3" className="form-label">
                 {Questions.common.q3}
               </label>
-              <input
-                type="number"
-                id="q3"
-                name="q3"
+              <ReactStars
+                count={5}
                 value={formData.q3}
-                onChange={handleInputChange}
-                min="1"
-                max="5"
-                className="form-input"
-                required
+                onChange={(newRating) =>
+                  handleStarRatingChange(newRating, "q3")
+                }
+                size={24}
+                activeColor="#ffffff"
+                starHoverColor="#d3d3d3"
+                starEmptyColor="#d3d3d3"
               />
             </div>
             <div className="form-group">
               <label htmlFor="q4" className="form-label">
                 {Questions.common.q4}
               </label>
-              <input
-                type="number"
-                id="q4"
-                name="q4"
-                value={formData.q4}
-                onChange={handleInputChange}
-                min="1"
-                max="5"
-                className="form-input"
-                required
+              <ReactStars
+                count={5}
+                value={formData.q3}
+                onChange={(newRating) =>
+                  handleStarRatingChange(newRating, "q3")
+                }
+                size={24}
+                activeColor="#ffffff"
+                starHoverColor="#d3d3d3"
+                starEmptyColor="#d3d3d3"
               />
             </div>
             <div className="form-group">
               <label htmlFor="q5" className="form-label">
                 {Questions.common.q5}
               </label>
-              <input
-                type="number"
-                id="q5"
-                name="q5"
-                value={formData.q5}
-                onChange={handleInputChange}
-                min="1"
-                max="5"
-                className="form-input"
-                required
+              <ReactStars
+                count={5}
+                value={formData.q3}
+                onChange={(newRating) =>
+                  handleStarRatingChange(newRating, "q3")
+                }
+                size={24}
+                activeColor="#ffffff"
+                starHoverColor="#d3d3d3"
+                starEmptyColor="#d3d3d3"
               />
             </div>
             <div className="form-group">
@@ -187,9 +194,20 @@ function Feedback() {
                 id="comments"
                 name="comments"
                 value={formData.comments}
-                onChange={handleInputChange}
+                onChange={(e) =>
+                  setFormData({ ...formData, comments: e.target.value })
+                }
                 className="form-textarea"
+                placeholder="Enter your comments here..."
                 required
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  borderRadius: "5px",
+                  border: "1px solid #ccc",
+                  minHeight: "100px", // Adjust height as needed
+                  resize: "vertical", // Allow vertical resizing
+                }}
               />
             </div>
             <button type="submit" className="btn-submit">

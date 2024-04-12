@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Allocate_Project.css";
+import { toast, ToastContainer } from "react-toastify"; // Import toast and ToastContainer from react-toastify
+import "react-toastify/dist/ReactToastify.css";
+
 const AllocateProject = () => {
   const [data, setData] = useState({ users: [], projects: [] });
   const [formData, setFormData] = useState({
@@ -66,9 +69,9 @@ const AllocateProject = () => {
 
       const res = await response.json();
       if (res.message !== "Project allocated") {
-        alert("Failed to allocate project");
+        toast.error("Failed to allocate project"); // Display error toast
       } else {
-        alert("Project allocated successfully");
+        toast.success("Project allocated successfully"); // Display success toast
       }
 
       setFormData({
@@ -84,12 +87,12 @@ const AllocateProject = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="allocateContainer container mt-5">
       <h2 style={{ color: "white" }}>Allocate Projects</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="projectID" className="form-label">
+          <label htmlFor="projectID" className="allocateForm form-label">
             Project ID:
           </label>
           <select
@@ -97,7 +100,7 @@ const AllocateProject = () => {
             name="PID"
             value={formData.PID}
             onChange={handleInputChange}
-            className="form-select"
+            className="allocateInput form-select"
             required
           >
             <option value="">Select Project ID</option>
@@ -109,7 +112,7 @@ const AllocateProject = () => {
           </select>
         </div>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">
+          <label htmlFor="email" className="allocateForm form-label">
             Name:
           </label>
           <select
@@ -117,7 +120,7 @@ const AllocateProject = () => {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className="form-select"
+            className="allocateInput form-select"
             required
           >
             <option value="">Select Email</option>
@@ -129,7 +132,7 @@ const AllocateProject = () => {
           </select>
         </div>
         <div className="mb-3">
-          <label htmlFor="allocationStart" className="form-label">
+          <label htmlFor="allocationStart" className="allocateForm form-label">
             Allocation Start:
           </label>
           <input
@@ -138,12 +141,12 @@ const AllocateProject = () => {
             name="allocation_start"
             value={formData.allocation_start}
             onChange={handleInputChange}
-            className="form-control"
+            className="allocateInput form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="allocationEnd" className="form-label">
+          <label htmlFor="allocationEnd" className="allocateForm form-label">
             Allocation End:
           </label>
           <input
@@ -152,7 +155,7 @@ const AllocateProject = () => {
             name="allocation_end"
             value={formData.allocation_end}
             onChange={handleInputChange}
-            className="form-control"
+            className="allocateInput form-control"
             required
           />
         </div>
@@ -160,6 +163,7 @@ const AllocateProject = () => {
           Allocate Project
         </button>
       </form>
+      <ToastContainer /> {/* Render the ToastContainer component */}
     </div>
   );
 };

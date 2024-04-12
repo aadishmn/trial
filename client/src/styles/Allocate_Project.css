@@ -4,7 +4,7 @@
   color: red;
 }
 
-.form-control {
+.allocateInput {
   width: 100%;
 }
 
@@ -18,7 +18,7 @@
   border-color: #542ee5; /* Darker shade of purple */
 }
 
-.container {
+.allocateContainer {
   max-width: 100%; /* Set maximum width for container */
   margin: auto; /* Center align container */
   padding: 20px; /* Add padding inside container */

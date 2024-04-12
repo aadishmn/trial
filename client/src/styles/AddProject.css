@@ -17,7 +17,7 @@
   width: 300px;
 }
 
-.form-group {
+.projectFormGroup {
   margin-bottom: 15px;
 }
 
@@ -40,6 +40,8 @@
 
 #subbtn {
   width: 100%;
+  background-color: #ab47bc; /* Purple */
+  border-color: #6a0dad;
 }
 
 .form-label {

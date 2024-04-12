@@ -9,8 +9,8 @@ const TimesheetControllers = require("../controllers/timesheetController");
 const Feedback = require("../controllers/feedbackController");
 //main apis
 router.post("/login", AuthControllers.login);
-router.post("/signup", authUtils.authenticateJWT, AuthControllers.register);
-router.put("/change_password", AuthControllers.change_password);
+router.post("/signup", AuthControllers.register);
+router.put("/changepassword/:id", AuthControllers.change_password);
 router.post("/forgot_password", AuthControllers.forgot_password);
 router.post("/create_project", ProjectControllers.create_project);
 router.post("/allocate_project", ProjectControllers.allocate_project);

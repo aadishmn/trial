@@ -40,23 +40,23 @@
   overflow-y: auto; /* Add vertical scrollbar when content exceeds max-height */
 }
 
-.card {
+.homeCard {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   height: 100%; /* Make the cards take full height */
 }
 
-.card-body {
+.homeCard-body {
   padding: 20px;
 }
 
-.card-heading {
+.homeCard-heading {
   color: #333;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
-.card-text {
+.homeCard-text {
   color: #666;
 }
 

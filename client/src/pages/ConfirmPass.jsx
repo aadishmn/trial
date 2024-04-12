@@ -1,9 +1,8 @@
-// ConfirmPass.js
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/ConfirmPass.css"; // Import ConfirmPass.css
+import { Toast, notifySuccess, notifyError } from "../components/Toast";
 
 const ConfirmPass = () => {
   const navigate = useNavigate();
@@ -14,7 +13,7 @@ const ConfirmPass = () => {
   const handleChangePassword = async (e) => {
     e.preventDefault();
     if (newPassword !== confirmPassword) {
-      setErrorMessage("Passwords do not match");
+      notifyError("Passwords do not match");
       return;
     }
     try {
@@ -25,7 +24,7 @@ const ConfirmPass = () => {
         { password: newPassword }
       );
       if (response.status === 200) {
-        alert("Password Updated Successfully !");
+        notifySuccess("Password Updated Successfully !"); // Show success toast
         navigate("/login");
       } else {
         console.log(response);
@@ -34,14 +33,15 @@ const ConfirmPass = () => {
     } catch (error) {
       console.log(error);
       setErrorMessage("An error occurred while updating password");
+      notifyError("An error occurred while updating password"); // Show error toast
     }
   };
 
   return (
-    <div className="container">
+    <div className="confirmPassContainer container">
       {" "}
       {/* Added container div */}
-      <div className="form-card">
+      <div className="confirmPassForm form-card">
         <form className="changePassForm" onSubmit={handleChangePassword}>
           <input
             type="password"
@@ -49,7 +49,7 @@ const ConfirmPass = () => {
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             required
-            className="form-control" // Added Bootstrap class
+            className="confirmPassInput form-control" // Added Bootstrap class
           />
           <br />
           <input
@@ -58,7 +58,7 @@ const ConfirmPass = () => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
-            className="form-control" // Added Bootstrap class
+            className="confirmPassInput form-control" // Added Bootstrap class
           />
           <br />
           {errorMessage && <p className="error-message">{errorMessage}</p>}
@@ -68,6 +68,7 @@ const ConfirmPass = () => {
           {/* Added Bootstrap classes */}
         </form>
       </div>
+      <Toast /> {/* Include the Toast component */}
     </div>
   );
 };

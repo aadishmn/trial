@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify"; // Import toast from react-toastify
+import "react-toastify/dist/ReactToastify.css"; // Import toast styles
 import "../styles/AddProject.css"; // Import AddProject.css
 
 function AddProject() {
@@ -9,7 +11,6 @@ function AddProject() {
     start: "",
     end: "",
   });
-  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -36,20 +37,19 @@ function AddProject() {
 
       const res = await response.json();
       if (res.message !== "Project Added") {
-        alert("Failed to add project");
+        toast.error("Failed to add project"); // Display error toast
       } else {
-        alert("Project added successfully");
+        toast.success("Project added successfully"); // Display success toast
+        setFormData({
+          name: "",
+          client_name: "",
+          start: "",
+          end: "",
+        });
       }
-
-      setFormData({
-        name: "",
-        client_name: "",
-        start: "",
-        end: "",
-      });
     } catch (error) {
       console.error("Error adding project:", error.message);
-      setErrorMessage(error.message);
+      toast.error("Failed to add project"); // Display error toast
     }
   };
 
@@ -58,10 +58,9 @@ function AddProject() {
       <h2 className="project-title" style={{ color: "white" }}>
         Add Project
       </h2>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form className="project-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name" className="form-label">
+        <div className="projectFormGroup form-group">
+          <label htmlFor="name" className="projectFormLabel form-label">
             Project Name:
           </label>
           <input
@@ -74,8 +73,8 @@ function AddProject() {
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="client_name" className="form-label">
+        <div className="projectFormGroup form-group">
+          <label htmlFor="client_name" className="projectFormLabel form-label">
             Client Name:
           </label>
           <input
@@ -88,8 +87,8 @@ function AddProject() {
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="start" className="form-label">
+        <div className="projectFormGroup form-group">
+          <label htmlFor="start" className="projectFormLabel form-label">
             Start Date:
           </label>
           <input
@@ -102,8 +101,8 @@ function AddProject() {
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="end" className="form-label">
+        <div className="projectFormGroup form-group">
+          <label htmlFor="end" className="projectFormLabel form-label">
             End Date:
           </label>
           <input
@@ -116,7 +115,11 @@ function AddProject() {
             required
           />
         </div>
-        <button type="submit" id="subbtn" className="btn btn-primary btn-sm">
+        <button
+          type="submit"
+          id="subbtn"
+          className="projectBtn btn btn-primary btn-sm"
+        >
           Add Project
         </button>
       </form>

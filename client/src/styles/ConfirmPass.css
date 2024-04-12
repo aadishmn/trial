@@ -1,7 +1,7 @@
 /* ConfirmPass.css */
 
 /* Container for centering */
-.container {
+.confirmPassContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,7 @@
 }
 
 /* Form card container */
-.form-card {
+.confirmPassForm {
   width: 400px;
   padding: 20px;
   border: 1px solid #ccc;
@@ -18,7 +18,7 @@
 }
 
 /* Form fields */
-.form-control {
+.confirmPassInput {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -39,12 +39,14 @@
   padding: 10px;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
+  background-color: #ab47bc; /* Purple */
+  border-color: #6a0dad;
   color: #fff;
   cursor: pointer;
 }
 
 /* Submit button hover effect */
 #confirm-btn:hover {
-  background-color: #0056b3;
+  background-color: #7b1fa2; /* Darker shade of purple on hover */
+  border-color: #542ee5;
 }
